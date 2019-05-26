@@ -4,6 +4,7 @@ import {DashboardComponent} from '@pages/admin/dashboard/dashboard.component';
 import {LoginComponent} from '@pages/admin/login/login.component';
 import {SharedModule} from '@shared/shared.module';
 import {AuthGuard} from '@guardsauth.guard';
+import { CKEditorModule } from 'ng2-ckeditor';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {AuthGuard} from '@guardsauth.guard';
         path: 'login',
         component: LoginComponent
       },
-    ])
+    ]),
+    CKEditorModule
   ],
   declarations: [
     LoginComponent,

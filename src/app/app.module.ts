@@ -8,6 +8,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
 import {ErrorInterceptor} from './shared/interceptors/error.interceptor';
 import {fakeBackendProvider} from './shared/interceptors/fake-backend';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {environment} from '../environments/environment';
+import {SharedModule} from '@shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,9 @@ import {fakeBackendProvider} from './shared/interceptors/fake-backend';
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     ReactiveFormsModule,
     HttpClientModule,
-    AppRouting
+    AppRouting,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

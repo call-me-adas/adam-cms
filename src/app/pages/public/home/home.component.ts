@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {PostsService} from '@servicesposts.service';
 
 @Component({
   selector: 'page-home',
@@ -6,4 +7,13 @@ import {Component} from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  posts: Array<any>;
+
+  constructor(private postsService: PostsService) {
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.postsService.getPosts().subscribe(res => (this.posts = res));
+  }
 }

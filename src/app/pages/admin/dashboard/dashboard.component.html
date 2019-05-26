@@ -1,3 +1,14 @@
 HOME ADMIN
 <a class="nav-item" >{{ isAdmin }}</a>
 <a class="nav-item nav-link" (click)="logout()">Logout</a>
+
+<br><br>
+<hr>
+
+<ckeditor [(ngModel)]="content"
+          #myckeditor="ngModel"
+          name="myckeditor"
+          [config]="ckeConfig">
+</ckeditor>
+
+<button (click)="send()">SEND</button>
