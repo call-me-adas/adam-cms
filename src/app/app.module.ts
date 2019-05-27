@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 import {SharedModule} from '@shared/shared.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {SharedModule} from '@shared/shared.module';
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRouting,

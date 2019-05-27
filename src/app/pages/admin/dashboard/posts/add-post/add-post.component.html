@@ -1,0 +1,61 @@
+<mat-card *ngIf="successMessage" class="message-box success">{{successMessage}}</mat-card>
+<mat-card *ngIf="errorMessage" class="message-box error">{{errorMessage}}</mat-card>
+
+<mat-toolbar>
+  <h2><a [routerLink]="['.']">List</a>&#8195;/&#8195;Adding new post</h2>
+  <div class="spacer"></div>
+  <button mat-raised-button (click)="send()" class="button-icon">
+    SEND <mat-icon>done</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-accordion>
+  <ng-container *ngFor="let item of content | keyvalue; first as isFirst">
+    <mat-expansion-panel [expanded]="isFirst">
+      <mat-expansion-panel-header>
+        <mat-panel-title> <span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.value.title}} </mat-panel-title>
+        <mat-panel-description> {{item.value.url}}</mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="form-container">
+        <div class="one-column">
+          <mat-checkbox [(ngModel)]="item.value.draft">
+            Save as draft?
+            <small>Drafts are hidden for another user. They are only available for editing</small>
+          </mat-checkbox>
+          <br><br>
+
+          <mat-form-field hintLabel="Max 10 characters">
+            <input matInput maxlength="10" placeholder="Enter url link" [(ngModel)]="item.value.url">
+            <mat-hint align="end">{{item.value.url.length || 0}}/10</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Enter title" [(ngModel)]="item.value.title">
+          </mat-form-field>
+        </div>
+        <div class="one-column">
+          <img [src]="item.value.image" class="image-preview"/>
+          <mat-form-field>
+            <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
+          </mat-form-field>
+        </div>
+
+
+
+
+
+      </div>
+
+      <ckeditor [(ngModel)]="item.value.body"
+                [config]="ckeConfig">
+      </ckeditor>
+    </mat-expansion-panel>
+  </ng-container>
+</mat-accordion>
+
+
+
+
+
+

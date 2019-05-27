@@ -9,6 +9,7 @@
       "@interceptors*": ["app/shared/interceptors/*"],
       "@guards*": ["app/shared/guards/*"],
       "@models*": ["app/shared/models/*"],
+      "@environments*": ["environments/*"],
       "@services*": ["app/shared/services/*"]
     },
     "outDir": "./dist/out-tsc",

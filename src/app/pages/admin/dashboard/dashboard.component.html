@@ -1,14 +1,32 @@
-HOME ADMIN
-<a class="nav-item" >{{ isAdmin }}</a>
-<a class="nav-item nav-link" (click)="logout()">Logout</a>
+<div class="onePageContainer">
+  <mat-toolbar>
+    <span>
+<!--      <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon> </button> -->
+      Dashboard
+    </span>
+    <div class="spacer"></div>
+    <button mat-button (click)="logout()" class="button-icon">LOGOUT <mat-icon>exit_to_app</mat-icon> </button>
+  </mat-toolbar>
 
-<br><br>
-<hr>
+  <mat-sidenav-container class="container">
+    <mat-sidenav #sidenav mode="side" opened class="sidenav" >
+      <mat-selection-list>
+        <ng-container *ngFor="let item of routing">
+          <a [routerLink]="['/', item.value]" routerLinkActive="active-link">
+            <mat-list-option >
+              <mat-icon mat-list-icon>folder</mat-icon>
+              <h4 mat-line>{{ item.text }}</h4>
+            </mat-list-option>
+          </a>
+        </ng-container>
+      </mat-selection-list>
+    </mat-sidenav>
 
-<ckeditor [(ngModel)]="content"
-          #myckeditor="ngModel"
-          name="myckeditor"
-          [config]="ckeConfig">
-</ckeditor>
+    <mat-sidenav-content>
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
 
-<button (click)="send()">SEND</button>

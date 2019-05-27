@@ -1,0 +1,22 @@
+.sidenav {
+  width: 200px;
+
+}
+.container {
+  height: 100%;
+}
+
+.content-container {
+  padding: 2em;
+  margin-bottom: 10em;
+}
+
+.active-link {
+  .mat-list-item {
+    background-color: rgb(242, 242, 242);
+  }
+}
+
+/deep/ .mat-list-base{
+  padding-top: 0!important;
+}
