@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {PostsService} from '@services/posts.service';
 import { environment } from '@environments/environment';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog} from '@angular/material';
 import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
-import {Location} from '@angular/common';
 
 @Component({
   selector: 'page-edit-post',
@@ -18,7 +17,7 @@ export class EditPostComponent implements OnInit {
   errorMessage;
   successMessage;
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute, public dialog: MatDialog, private location: Location) {
+  constructor(private postsService: PostsService, private route: ActivatedRoute, public dialog: MatDialog, private router: Router) {
     this.ckeConfig = environment.ckeConfig;
     // this.defaultContent = environment.defaultCkeContent;
   }
@@ -36,26 +35,34 @@ export class EditPostComponent implements OnInit {
     });
   }
 
+  editPost(id: string) {
+    this.postsService.editPost(id, {body: this.defaultContent});
+  }
+
   deletePost(id: string) {
     this.postsService.deletePost(id);
   }
 
   delete() {
-    this.openDialog();
+    this.openDialog(false);
   }
 
-  openDialog(): void {
+  openDialog(edit): void {
     const dialogRef = this.dialog.open(DialogYesNoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        this.deletePost(this.idParametr);
-        this.location.go('../');
+      if (result) {
+        if (!edit) {
+          this.deletePost(this.idParametr);
+        } else {
+          this.editPost(this.idParametr);
+        }
+        this.router.navigate(['../'], { relativeTo: this.route });
       }
     });
   }
 
   edit() {
-
+    this.openDialog(true);
   }
 }

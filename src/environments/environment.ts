@@ -31,7 +31,7 @@ export const environment = {
       url: 'url-pl',
       image: defaultFeaturedImage,
       title: 'Domyślny nagłówek',
-      body: ''
+      body: 'Witaj'
     },
     gb: {
       draft: true,
@@ -39,7 +39,7 @@ export const environment = {
       url: 'url-gb',
       image: defaultFeaturedImage,
       title: 'Default title',
-      body: ''
+      body: 'Hi'
     }
   },
   firebaseConfig: {

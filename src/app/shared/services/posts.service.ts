@@ -54,4 +54,8 @@ export class PostsService {
   deletePost(id: string) {
     return this.firestore.collection('/posts').doc(id).delete();
   }
+
+  editPost(id: string, value) {
+    return this.firestore.collection('/posts').doc(id).set(value);
+  }
 }

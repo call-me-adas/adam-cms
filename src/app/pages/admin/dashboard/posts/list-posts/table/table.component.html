@@ -32,8 +32,8 @@
   </ng-container>
 
   <ng-container matColumnDef="draft">
-    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">save</mat-icon> Draft </mat-header-cell>
-    <mat-cell *matCellDef="let item"> <mat-icon>{{ item.draft ? 'check' : 'clear' }}</mat-icon>  </mat-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">save</mat-icon> Published </mat-header-cell>
+    <mat-cell *matCellDef="let item"> <mat-icon>{{ item.draft ? 'clear' : 'check' }}</mat-icon>  </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="edit">

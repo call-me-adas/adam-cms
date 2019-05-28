@@ -13,7 +13,7 @@
   <ng-container *ngFor="let item of defaultContent | keyvalue; first as isFirst">
     <mat-expansion-panel [expanded]="isFirst">
       <mat-expansion-panel-header>
-        <mat-panel-title> <span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.value.title}} </mat-panel-title>
+        <mat-panel-title style="width: 15%;"> <span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.value.title}} </mat-panel-title>
         <mat-panel-description> {{item.value.url}}</mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -33,18 +33,14 @@
           <mat-form-field>
             <input matInput placeholder="Enter title" [(ngModel)]="item.value.title">
           </mat-form-field>
-        </div>
-        <div class="one-column">
-          <img [src]="item.value.image" class="image-preview"/>
+
           <mat-form-field>
             <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
           </mat-form-field>
         </div>
-
-
-
-
-
+        <div class="one-column">
+          <img [src]="item.value.image" class="image-preview"/>
+        </div>
       </div>
 
       <ckeditor [(ngModel)]="item.value.body"
