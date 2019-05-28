@@ -3,11 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
   {
-    path: 'admin',
+    path: '',
     loadChildren: './pages/public/public.module#PublicModule'
   },
   {
-    path: '',
+    path: 'admin',
     loadChildren: './pages/admin/admin.module#AdminModule'
   },
   // otherwise redirect to home

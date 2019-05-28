@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {PostsService} from '@servicesposts.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'page-home',
@@ -7,13 +8,14 @@ import {PostsService} from '@servicesposts.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  posts: Array<any>;
+  posts: Observable<any>;
+  language = 'pl';
 
   constructor(private postsService: PostsService) {
-    this.getPosts();
+    this.posts = this.getPublishedPosts(this.language);
   }
 
-  getPosts() {
-    this.postsService.getPosts().subscribe(res => (this.posts = res));
+  getPublishedPosts(lang): Observable<any> {
+    return this.postsService.getPublishedPosts(lang);
   }
 }

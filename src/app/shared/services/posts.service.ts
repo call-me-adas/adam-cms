@@ -47,6 +47,32 @@ export class PostsService {
     );
   }
 
+  getPublishedPosts(lang) {
+    return this.firestore.collection('/posts').snapshotChanges().pipe(
+      map(actions => {
+        return actions.map((a: any) => {
+          const data = a.payload.doc.data();
+          const id = a.payload.doc.id;
+
+          const res = [];
+          for (const prop of Object.keys(data.body)) {
+            if (lang === '') {
+              if (data.body[prop].draft) {
+                res.push({ id, ...data.body[prop]});
+              }
+            } else {
+              if (data.body[prop].draft && prop === lang) {
+                res.push({ id, ...data.body[prop]});
+              }
+            }
+          }
+          console.log(res);
+          return res[0];
+        });
+      }),
+    );
+  }
+
   getPost(id: string) {
     return this.firestore.collection('/posts').doc(id).snapshotChanges();
   }

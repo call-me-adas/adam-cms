@@ -15,7 +15,7 @@ export class DashboardComponent {
 
   constructor( private router: Router, private authenticationService: AuthenticationService) {
     this.routing = [
-      {text: 'Posts', value: 'posts', icon: 'file_copy'},
+      {text: 'Pages', value: 'posts', icon: 'file_copy'},
       {text: 'Users', value: 'users', icon: 'people'}
     ];
   }

@@ -1,15 +1,28 @@
+<mat-toolbar>My App</mat-toolbar>
 
-Lista:
-- tlumaczenie z prefixami /en /pl
-- stylowanie
-- tagi na posta i zeby trafialy do odpowiednich kategori
+<!--Lista:-->
+<!-- - tlumaczenie z prefixami /en /pl-->
+<!-- - stylowanie-->
+<!-- - tagi na posta i zeby trafialy do odpowiednich kategori-->
 
+<div class="container">
+  <ng-container *ngFor="let post of (posts| async)">
 
-<hr>
+    <mat-card class="example-card">
+      <a [routerLink]="['/post/', post.id]">
+        <mat-card-title>{{post.title}}</mat-card-title>
+        <img mat-card-image [src]="post.image">
+      </a>
+      <mat-card-content>
+        <p>{{post.body | striphtml | truncate: 20 : false : '...' }}</p>
+        <p><a [routerLink]="['/post/', post.id]">Read more</a></p>
+      </mat-card-content>
+    </mat-card>
 
-<div *ngFor="let post of posts">
-  <div style="border: 1px solid black">
-    <h2>Naglowek {{post.id}}</h2>
-    <div [innerHTML]="post.body  | safe: 'html'"></div>
-  </div>
+<!--    <div style="border: 1px solid black">-->
+<!--      <h2>Naglowek {{post.id}}</h2>-->
+<!--      <div [innerHTML]="post.body  | safe: 'html'"></div>-->
+<!--    </div>-->
+  </ng-container>
 </div>
+

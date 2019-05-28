@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SafePipe} from '@shared/pipes/safe.pipe';
+import {StripHtmlPipe} from '@shared/pipes/strip-html.pipe';
+import {TruncatePipe} from '@shared/pipes/truncate.pipe';
 
 @NgModule({
   imports:      [
@@ -9,13 +11,17 @@ import {SafePipe} from '@shared/pipes/safe.pipe';
     ReactiveFormsModule
   ],
   declarations: [
-    SafePipe
+    SafePipe,
+    StripHtmlPipe,
+    TruncatePipe
   ],
   exports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    SafePipe
+    SafePipe,
+    TruncatePipe,
+    StripHtmlPipe
   ]
 })
 export class SharedModule {}
