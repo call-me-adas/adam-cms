@@ -2,7 +2,7 @@
 <mat-card *ngIf="errorMessage" class="message-box error">{{errorMessage}}</mat-card>
 
 <mat-toolbar>
-  <h2><a [routerLink]="['../']">List</a>&#8195;/&#8195;Editing post <small>{{idParametr}}</small></h2>
+  <h2><a [routerLink]="['../../']">List</a>&#8195;/&#8195;Editing post <small>{{idParametr}}</small></h2>
   <div class="spacer"></div>
   <button mat-raised-button (click)="edit()" class="button-icon" style="margin-right: 15px;">
     EDIT <mat-icon>edit</mat-icon>
@@ -22,12 +22,7 @@
 
       <div class="form-container">
         <div class="one-column">
-          <mat-checkbox [(ngModel)]="item.value.draft">
-            Save as draft?
-            <small>Drafts are hidden for another user. They are only available for editing</small>
-          </mat-checkbox>
-          <br><br>
-
+          <h2><span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.key === 'gb'? 'English' : 'Polish'}} Version</h2>
           <mat-form-field hintLabel="Max 10 characters">
             <input matInput maxlength="10" placeholder="Enter url link" [(ngModel)]="item.value.url">
             <mat-hint align="end">{{item.value.url.length || 0}}/10</mat-hint>
@@ -40,7 +35,14 @@
           <mat-form-field>
             <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
           </mat-form-field>
+
+          <mat-checkbox [(ngModel)]="item.value.draft">
+            Save as draft?
+            <small>Drafts are hidden for another user. They are only available for editing</small>
+          </mat-checkbox>
+          <br><br>
         </div>
+
         <div class="one-column">
           <img [src]="item.value.image" class="image-preview"/>
         </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
-import {map, take} from 'rxjs/operators';
+import {filter, map, take} from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })
@@ -54,22 +54,21 @@ export class PostsService {
           const data = a.payload.doc.data();
           const id = a.payload.doc.id;
 
-          const res = [];
+          let res = {};
           for (const prop of Object.keys(data.body)) {
             if (lang === '') {
-              if (data.body[prop].draft) {
-                res.push({ id, ...data.body[prop]});
+              if (!data.body[prop].draft) {
+                res = ({ id, ...data.body[prop]});
               }
             } else {
-              if (data.body[prop].draft && prop === lang) {
-                res.push({ id, ...data.body[prop]});
+              if (!data.body[prop].draft && prop === lang) {
+                res = ({ id, ...data.body[prop]});
               }
             }
           }
-          console.log(res);
-          return res[0];
-        });
-      }),
+          return res;
+        }).filter(el => el.hasOwnProperty('id'));
+      })
     );
   }
 

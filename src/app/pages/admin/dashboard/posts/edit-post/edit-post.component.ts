@@ -57,7 +57,7 @@ export class EditPostComponent implements OnInit {
         } else {
           this.editPost(this.idParametr);
         }
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['../../'], { relativeTo: this.route });
       }
     });
   }

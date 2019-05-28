@@ -39,7 +39,7 @@
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">edit</mat-icon> Edit </mat-header-cell>
     <mat-cell *matCellDef="let item">
-      <a [routerLink]="['/edit/', item.id]"><button mat-raised-button>Edit</button></a>
+      <a [routerLink]="['./edit/', item.id]"><button mat-raised-button>Edit</button></a>
     </mat-cell>
   </ng-container>
 
