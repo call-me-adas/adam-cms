@@ -1,0 +1,37 @@
+.sidenav {
+  width: 200px;
+
+}
+.container {
+  height: 100%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.form-container {
+  display: flex;
+  .one-column {
+    padding: 2em;
+  }
+}
+
+.table-icon-header {
+  font-size: 100%;
+  margin: 12px 0px 0 1px;
+}
+
+mat-row {
+  height: 70px;
+}
+
+.form-fields-inline {
+  display: flex;
+  .small-field {
+    width: 150px;
+    ::ng-deep .mat-select-arrow-wrapper {
+      opacity: 0;
+    }
+  }
+}

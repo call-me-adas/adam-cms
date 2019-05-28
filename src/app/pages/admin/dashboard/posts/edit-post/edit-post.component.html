@@ -2,15 +2,18 @@
 <mat-card *ngIf="errorMessage" class="message-box error">{{errorMessage}}</mat-card>
 
 <mat-toolbar>
-  <h2><a [routerLink]="['.']">List</a>&#8195;/&#8195;Adding new post</h2>
+  <h2><a [routerLink]="['../']">List</a>&#8195;/&#8195;Editing post <small>{{idParametr}}</small></h2>
   <div class="spacer"></div>
-  <button mat-raised-button (click)="send()" class="button-icon">
-    SEND <mat-icon>done</mat-icon>
+  <button mat-raised-button (click)="edit()" class="button-icon" style="margin-right: 15px;">
+    EDIT <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-raised-button (click)="delete()" class="button-icon">
+    DELETE <mat-icon>delete_outline</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-accordion>
-  <ng-container *ngFor="let item of content | keyvalue; first as isFirst">
+  <ng-container *ngFor="let item of defaultContent | keyvalue; first as isFirst">
     <mat-expansion-panel [expanded]="isFirst">
       <mat-expansion-panel-header>
         <mat-panel-title> <span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.value.title}} </mat-panel-title>

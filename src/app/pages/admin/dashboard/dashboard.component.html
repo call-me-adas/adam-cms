@@ -14,7 +14,7 @@
         <ng-container *ngFor="let item of routing">
           <a [routerLink]="['/', item.value]" routerLinkActive="active-link">
             <mat-list-option >
-              <mat-icon mat-list-icon>folder</mat-icon>
+              <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
               <h4 mat-line>{{ item.text }}</h4>
             </mat-list-option>
           </a>

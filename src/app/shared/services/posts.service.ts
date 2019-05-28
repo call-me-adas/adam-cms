@@ -46,4 +46,12 @@ export class PostsService {
       }),
     );
   }
+
+  getPost(id: string) {
+    return this.firestore.collection('/posts').doc(id).snapshotChanges();
+  }
+
+  deletePost(id: string) {
+    return this.firestore.collection('/posts').doc(id).delete();
+  }
 }

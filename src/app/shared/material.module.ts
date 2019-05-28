@@ -14,7 +14,7 @@ import {
   MatSnackBarModule,
   MatTooltipModule,
   MatSidenavModule,
-  MatToolbarModule, MatTabsModule, MatExpansionModule, MatCheckboxModule
+  MatToolbarModule, MatTabsModule, MatExpansionModule, MatCheckboxModule, MatTableModule, MatSelectModule
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -38,11 +38,14 @@ import {NgModule} from '@angular/core';
     MatToolbarModule,
     MatExpansionModule,
     MatCheckboxModule,
+    MatTableModule,
+    MatSelectModule,
     MatDialogModule
   ],
   exports: [
     MatButtonModule,
     MatMenuModule,
+    MatTableModule,
     MatIconModule,
     MatCardModule,
     MatSliderModule,
@@ -59,6 +62,7 @@ import {NgModule} from '@angular/core';
     MatToolbarModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatSelectModule,
     MatDialogModule
   ],
 })

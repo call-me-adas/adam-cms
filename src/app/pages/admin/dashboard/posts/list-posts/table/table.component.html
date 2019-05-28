@@ -1,0 +1,48 @@
+<div class="example-header">
+  <div class="form-fields-inline">
+    <mat-form-field class="small-field">
+      <mat-label>Filter by</mat-label>
+      <mat-select [(ngModel)]="selectedOption" (selectionChange)="changeFilter()">
+        <mat-option [value]="'title'">Title </mat-option>
+        <mat-option [value]="'url'"> Link </mat-option>
+        <mat-option [value]="'language'"> Language </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Value">
+    </mat-form-field>
+  </div>
+</div>
+
+<mat-table #table [dataSource]="dataSource" [trackBy]="trackBy" matSort class="animate">
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">title</mat-icon>Title </mat-header-cell>
+    <mat-cell *matCellDef="let item"> <b>{{ item.title }}</b> </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="url">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">link</mat-icon> Link </mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{ item.url }} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="language">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">public</mat-icon> Language </mat-header-cell>
+    <mat-cell *matCellDef="let item"> <span [ngClass]="['flag-icon', 'flag-icon-'+item.language]"></span></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="draft">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">save</mat-icon> Draft </mat-header-cell>
+    <mat-cell *matCellDef="let item"> <mat-icon>{{ item.draft ? 'check' : 'clear' }}</mat-icon>  </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">edit</mat-icon> Edit </mat-header-cell>
+    <mat-cell *matCellDef="let item">
+      <a [routerLink]="['/edit/', item.id]"><button mat-raised-button>Edit</button></a>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" class="animate"></mat-row>
+</mat-table>

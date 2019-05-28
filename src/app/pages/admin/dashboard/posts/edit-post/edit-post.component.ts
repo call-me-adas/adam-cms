@@ -1,68 +1,61 @@
-import {Component, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthenticationService} from '@servicesauth.service';
-import {User} from '@models/user.model';
+import {Component, OnInit} from '@angular/core';
 import {PostsService} from '@services/posts.service';
-import { environment } from '../../../../../../environments/environment';
+import { environment } from '@environments/environment';
+import {ActivatedRoute} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'page-edit-post',
   templateUrl: './edit-post.component.html',
   styleUrls: ['./edit-post.component.scss']
 })
-export class EditPostComponent {
+export class EditPostComponent implements OnInit {
+  idParametr: string;
   ckeConfig: any;
-  content = {
-    pl: {
-      draft: true,
-      url: 'url-pl',
-      image: environment.defaultFeaturedImage,
-      title: 'Domyślny nagłówek',
-      body: ''
-    },
-    gb: {
-      draft: true,
-      url: 'url-gb',
-      image: environment.defaultFeaturedImage,
-      title: 'Default title',
-      body: ''
-    }
-  };
-  environment = environment;
-  currentUser: User;
+  defaultContent: any;
   errorMessage;
   successMessage;
 
-  constructor( private router: Router, private postsService: PostsService) {
-    this.ckeConfig = {
-      toolbar: [
-        { name: 'clipboard', items: [ 'Undo', 'Redo' ] },
-        { name: 'styles', items: [ 'Styles', 'Format' ] },
-        { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
-        { name: 'paragraph', items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote' ] },
-        { name: 'links', items: [ 'Link', 'Unlink' ] },
-        { name: 'insert', items: [ 'Image', 'EmbedSemantic', 'Table' ] },
-        { name: 'tools', items: [ 'Maximize' ] },
-        { name: 'editing', items: [ 'Scayt' ] }
-      ],
-      customConfig: '',
-      extraPlugins: 'autoembed,embedsemantic,image2',
-      removePlugins: 'image',
-      height: 600,
-      bodyClass: 'article-editor',
-      format_tags: 'p;h1;h2;h3;pre',
-      removeDialogTabs: 'image:advanced;link:advanced',
-    };
+  constructor(private postsService: PostsService, private route: ActivatedRoute, public dialog: MatDialog, private location: Location) {
+    this.ckeConfig = environment.ckeConfig;
+    // this.defaultContent = environment.defaultCkeContent;
   }
 
-  send() {
-    this.postsService.addNewPost({body: this.content})
-      .then(data => {
-        this.successMessage = data.msg;
-        setTimeout(() => {this.successMessage = ''; }, 2500);
-      }).catch(err => {
-      this.errorMessage = err.msg;
-      setTimeout(() => {this.errorMessage = ''; }, 2500);
+  ngOnInit() {
+    this.route.paramMap.subscribe((params: any) => {
+      this.idParametr = params.params.id;
+      this.getPost(this.idParametr);
     });
+  }
+
+  getPost(id: string) {
+    this.postsService.getPost(id).subscribe((res: any) => {
+      this.defaultContent = res.payload.data().body;
+    });
+  }
+
+  deletePost(id: string) {
+    this.postsService.deletePost(id);
+  }
+
+  delete() {
+    this.openDialog();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogYesNoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.deletePost(this.idParametr);
+        this.location.go('../');
+      }
+    });
+  }
+
+  edit() {
+
   }
 }
