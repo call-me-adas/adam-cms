@@ -3,17 +3,26 @@ import {RouterModule} from '@angular/router';
 import {HomeComponent} from '@pages/public/home/home.component';
 import {SharedModule} from '@shared/shared.module';
 import {MaterialModule} from '@shared/material.module';
+import {PublicComponent} from '@pages/public/public.component';
 
 @NgModule({
   imports: [
     MaterialModule,
     SharedModule,
     RouterModule.forChild([
-      {path: '', component: HomeComponent}
+      {
+        path: ':lang',
+        component: PublicComponent,
+        children: [
+          {path: '', component: HomeComponent}
+        ]
+      },
+      { path: '', redirectTo: 'en' }
     ])
   ],
   declarations: [
-    HomeComponent
+    HomeComponent,
+    PublicComponent
   ],
   exports: []
 })
