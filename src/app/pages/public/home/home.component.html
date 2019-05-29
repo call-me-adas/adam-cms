@@ -10,13 +10,13 @@
     <ng-container *ngIf="data.length; else noItems">
       <ng-container *ngFor="let post of data">
         <mat-card class="example-card">
-          <a [routerLink]="['/post/', post.id]">
+          <a [routerLink]="['/post/', post.url]">
             <mat-card-title>{{post.title}}</mat-card-title>
             <img mat-card-image [src]="post.image">
           </a>
           <mat-card-content>
             <p>{{post.body | striphtml | truncate: 20 : false : '...' }}</p>
-            <p><a [routerLink]="['/post/', post.id]">Read more</a></p>
+            <p><a [routerLink]="['/post/', post.url]">Read more</a></p>
           </mat-card-content>
         </mat-card>
       </ng-container>

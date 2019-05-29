@@ -61,7 +61,7 @@ export class EditPostComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.router.navigate(['../../'], { relativeTo: this.route });
+        this.router.navigate(['../../../'], { relativeTo: this.route });
         callback.apply(this, [this.idParametr]);
       }
     });

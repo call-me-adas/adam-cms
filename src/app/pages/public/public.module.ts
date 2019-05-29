@@ -5,6 +5,8 @@ import {SharedModule} from '@shared/shared.module';
 import {MaterialModule} from '@shared/material.module';
 import {PublicComponent} from '@pages/public/public.component';
 import {environment} from '@environments/environment';
+import {PostComponent} from '@pages/public/post/post.component';
+import {NotFoundComponent} from '@pages/public/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import {environment} from '@environments/environment';
         path: ':lang',
         component: PublicComponent,
         children: [
-          {path: '', component: HomeComponent}
+          {path: '', component: HomeComponent},
+          {path: 'post/:id', component: PostComponent},
+          {path: 'not-found', component: NotFoundComponent}
         ]
       },
       { path: '', redirectTo: environment.defaultLang }
@@ -23,7 +27,9 @@ import {environment} from '@environments/environment';
   ],
   declarations: [
     HomeComponent,
-    PublicComponent
+    PublicComponent,
+    NotFoundComponent,
+    PostComponent
   ],
   exports: []
 })

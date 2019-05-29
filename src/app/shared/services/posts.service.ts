@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
-import {filter, map, take} from 'rxjs/operators';
+import {defaultIfEmpty, endWith, filter, flatMap, map, mergeAll, mergeMap, startWith, take} from 'rxjs/operators';
+import {empty, merge, Observable, of} from 'rxjs';
 
 
 @Injectable({ providedIn: 'root' })
@@ -73,6 +74,21 @@ export class PostsService {
 
   getPost(id: string) {
     return this.firestore.collection('/posts').doc(id).snapshotChanges();
+  }
+
+  getPostByUrl(url: string) {
+    return new Promise<any>((resolve, reject) => {
+      this.getPosts().pipe(take(1)).subscribe((res) => {
+        res.forEach((item: any) => {
+          for (const prop of Object.keys(item.body)) {
+            if (item.body[prop].url === url) {
+              resolve(item.body[prop]);
+            }
+          }
+        });
+        resolve(false);
+      });
+    });
   }
 
   deletePost(id: string) {

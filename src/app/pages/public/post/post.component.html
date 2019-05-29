@@ -1,0 +1,9 @@
+<mat-toolbar>My App</mat-toolbar>
+
+<div style="padding: 5em;">
+  <h1>{{  post?.title }}</h1>
+  <img [src]="post?.image" />
+  <br><br>
+  <div [innerHTML]="post?.body"></div>
+</div>
+
