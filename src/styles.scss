@@ -77,3 +77,28 @@ mat-header-cell, mat-cell {
   display:flex;
   justify-content:center;
 }
+
+.success-snackbar {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.error-snackbar {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.group {
+  width: 100%;
+  display: flex;
+  .button {
+    flex: 1;
+  }
+}
+
+.hidden {
+  display: none;
+}
+

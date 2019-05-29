@@ -14,7 +14,14 @@ import {
   MatSnackBarModule,
   MatTooltipModule,
   MatSidenavModule,
-  MatToolbarModule, MatTabsModule, MatExpansionModule, MatCheckboxModule, MatTableModule, MatSelectModule
+  MatToolbarModule,
+  MatTabsModule,
+  MatExpansionModule,
+  MatCheckboxModule,
+  MatTableModule,
+  MatSelectModule,
+  MatStepperModule,
+  MatButtonToggleModule
 } from '@angular/material';
 import {NgModule} from '@angular/core';
 
@@ -39,6 +46,9 @@ import {NgModule} from '@angular/core';
     MatExpansionModule,
     MatCheckboxModule,
     MatTableModule,
+    MatStepperModule,
+    MatButtonToggleModule,
+    MatSnackBarModule,
     MatSelectModule,
     MatDialogModule
   ],
@@ -52,10 +62,13 @@ import {NgModule} from '@angular/core';
     MatTabsModule,
     MatProgressBarModule,
     MatAutocompleteModule,
+    MatSnackBarModule,
     MatInputModule,
     MatSidenavModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatButtonToggleModule,
+    MatStepperModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatListModule,

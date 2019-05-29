@@ -11,12 +11,11 @@ export class PostsService {
     return new Promise<any>((resolve, reject) => {
       this.getPosts().pipe(take(1)).subscribe((res: any) => {
         const urlPl = data.body.pl.url;
-        const urlGb = data.body.gb.url;
+        const urlGb = data.body.en.url;
         let err = {msg: ''};
-
         res.forEach(element => {
           if (element.body.pl.url === urlPl || element.body.pl.url === urlGb
-            || element.body.gb.url === urlGb || element.body.gb.url === urlGb) {
+            || element.body.en.url === urlGb || element.body.en.url === urlGb) {
             err = {msg: 'already exist this url'};
             return;
           }
@@ -30,7 +29,7 @@ export class PostsService {
         this.firestore
           .collection('posts')
           .add(data)
-          .then(val => resolve({msg: 'added '+ val.path}), error => reject(error));
+          .then(val => resolve({msg: 'added ' + val.path}), error => reject(error));
       });
     });
   }

@@ -12,6 +12,7 @@ import {ListPostsComponent} from '@pages/admin/dashboard/posts/list-posts/list-p
 import {AddPostComponent} from '@pages/admin/dashboard/posts/add-post/add-post.component';
 import {TableComponent} from '@pages/admin/dashboard/posts/list-posts/table/table.component';
 import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
+import {environment} from '@environmentsenvironment';
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.
     MaterialModule,
     RouterModule.forChild([
       {
-        path: '',
+        path: 'home',
         component: DashboardComponent,
         canActivate: [AuthGuard],
         children: [
@@ -35,7 +36,7 @@ import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.
                 component:  AddPostComponent,
               },
               {
-                path:  'edit/:id',
+                path:  'edit/:id/:lang',
                 component:  EditPostComponent,
               }
             ]
@@ -50,7 +51,7 @@ import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.
       {
         path: 'login',
         component: LoginComponent
-      },
+      }
     ]),
     CKEditorModule
   ],

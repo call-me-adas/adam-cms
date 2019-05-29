@@ -12,7 +12,7 @@
     <mat-sidenav #sidenav mode="side" opened class="sidenav" >
       <mat-selection-list>
         <ng-container *ngFor="let item of routing">
-          <a [routerLink]="['/', item.value]" routerLinkActive="active-link">
+          <a [routerLink]="['/admin/', env.defaultLang, item.value]" routerLinkActive="active-link">
             <mat-list-option >
               <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
               <h4 mat-line>{{ item.text }}</h4>

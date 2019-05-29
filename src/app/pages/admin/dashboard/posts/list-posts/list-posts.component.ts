@@ -1,9 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthenticationService} from '@servicesauth.service';
-import {User} from '@models/user.model';
-import {PostsService} from '@services/posts.service';
-import { environment } from '../../../../../../environments/environment';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'page-list-posts',
@@ -12,6 +7,4 @@ import { environment } from '../../../../../../environments/environment';
 })
 export class ListPostsComponent {
 
-  constructor(private postsService: PostsService) {
-  }
 }

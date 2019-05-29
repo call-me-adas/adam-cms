@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {PostsService} from '@services/posts.service';
 import { environment } from '@environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
 
 @Component({
@@ -13,10 +13,10 @@ import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.
 export class AddPostComponent {
   ckeConfig: any;
   defaultContent: any;
-  errorMessage;
-  successMessage;
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute, public dialog: MatDialog, private router: Router) {
+  constructor(private postsService: PostsService, private route: ActivatedRoute,
+              public dialog: MatDialog, private router: Router,
+              private snackBar: MatSnackBar) {
     this.ckeConfig = environment.ckeConfig;
     this.defaultContent = environment.defaultCkeContent;
   }
@@ -38,14 +38,19 @@ export class AddPostComponent {
   addNewPost() {
     this.postsService.addNewPost({body: this.defaultContent})
       .then(data => {
-        this.successMessage = data.msg;
-        setTimeout(() => {
-          this.successMessage = '';
-          this.router.navigate(['../'], { relativeTo: this.route });
-        }, 2500);
+        this.router.navigate(['../'], { relativeTo: this.route });
+        this.snackBar.open(data.msg, '', {
+          duration: 3000,
+          panelClass: ['success-snackbar'],
+          verticalPosition: 'top'
+        });
       }).catch(err => {
-      this.errorMessage = err.msg;
-      setTimeout(() => {this.errorMessage = ''; }, 2500);
+      console.log(err);
+      this.snackBar.open(err.msg, '',{
+        duration: 3000,
+        panelClass: ['error-snackbar'],
+        verticalPosition: 'top'
+      });
     });
   }
 }

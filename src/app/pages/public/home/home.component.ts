@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {PostsService} from '@servicesposts.service';
 import {Observable} from 'rxjs';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'page-home',
@@ -9,10 +10,9 @@ import {Observable} from 'rxjs';
 })
 export class HomeComponent {
   posts: Observable<any>;
-  language = 'pl';
 
-  constructor(private postsService: PostsService) {
-    this.posts = this.getPublishedPosts(this.language);
+  constructor(private postsService: PostsService, private translate: TranslateService) {
+    this.posts = this.getPublishedPosts(translate.currentLang);
   }
 
   getPublishedPosts(lang): Observable<any> {

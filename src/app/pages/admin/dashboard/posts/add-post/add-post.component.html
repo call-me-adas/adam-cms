@@ -1,6 +1,3 @@
-<mat-card *ngIf="successMessage" class="message-box success">{{successMessage}}</mat-card>
-<mat-card *ngIf="errorMessage" class="message-box error">{{errorMessage}}</mat-card>
-
 <mat-toolbar>
   <h2><a [routerLink]="['../']">List</a>&#8195;/&#8195;Adding new post</h2>
   <div class="spacer"></div>
@@ -9,49 +6,46 @@
   </button>
 </mat-toolbar>
 
-<mat-accordion>
-  <ng-container *ngFor="let item of defaultContent | keyvalue; first as isFirst">
-    <mat-expansion-panel [expanded]="isFirst">
-      <mat-expansion-panel-header>
-        <mat-panel-title style="width: 15%;"> <span [ngClass]="['flag-icon', 'flag-icon-'+item.key]"></span> {{item.value.title}} </mat-panel-title>
-        <mat-panel-description> {{item.value.url}}</mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <div class="form-container">
-        <div class="one-column">
-          <mat-checkbox [(ngModel)]="item.value.draft">
-            Save as draft?
-            <small>Drafts are hidden for another user. They are only available for editing</small>
-          </mat-checkbox>
-          <br><br>
-
-          <mat-form-field hintLabel="Max 10 characters">
-            <input matInput maxlength="10" placeholder="Enter url link" [(ngModel)]="item.value.url">
-            <mat-hint align="end">{{item.value.url.length || 0}}/10</mat-hint>
-          </mat-form-field>
-
-          <mat-form-field>
-            <input matInput placeholder="Enter title" [(ngModel)]="item.value.title">
-          </mat-form-field>
-
-          <mat-form-field>
-            <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
-          </mat-form-field>
-        </div>
-        <div class="one-column">
-          <img [src]="item.value.image" class="image-preview"/>
-        </div>
-      </div>
-
-      <ckeditor [(ngModel)]="item.value.body"
-                [config]="ckeConfig">
-      </ckeditor>
-    </mat-expansion-panel>
+<mat-button-toggle-group #group="matButtonToggleGroup" [value]="'en'" class="group">
+  <ng-container *ngFor="let item of defaultContent | keyvalue">
+    <mat-button-toggle value={{item.key}} class="button">
+      <span [ngClass]="['flag-icon', 'flag-icon-'+(item.key === 'en' ? 'gb': item.key)]"></span>
+      {{item.value.title}}
+    </mat-button-toggle>
   </ng-container>
-</mat-accordion>
+</mat-button-toggle-group>
 
+<ng-container *ngFor="let item of defaultContent | keyvalue">
+  <div [class.hidden]="group.value!==item.key">
+    <div class="form-container">
+      <div class="one-column">
+        <mat-form-field hintLabel="Max 10 characters">
+          <input matInput maxlength="10" placeholder="Enter url link" [(ngModel)]="item.value.url">
+          <mat-hint align="end">{{item.value.url.length || 0}}/10</mat-hint>
+        </mat-form-field>
 
+        <mat-form-field>
+          <input matInput placeholder="Enter title" [(ngModel)]="item.value.title">
+        </mat-form-field>
 
+        <mat-form-field>
+          <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
+        </mat-form-field>
+
+        <mat-checkbox [(ngModel)]="item.value.draft">
+          Save as draft?
+        </mat-checkbox>
+      </div>
+      <div class="one-column">
+        <img [src]="item.value.image" class="image-preview"/>
+      </div>
+    </div>
+
+    <ckeditor [(ngModel)]="item.value.body"
+              [config]="ckeConfig">
+    </ckeditor>
+  </div>
+</ng-container>
 
 
 

@@ -4,6 +4,7 @@ import {HomeComponent} from '@pages/public/home/home.component';
 import {SharedModule} from '@shared/shared.module';
 import {MaterialModule} from '@shared/material.module';
 import {PublicComponent} from '@pages/public/public.component';
+import {environment} from '@environments/environment';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import {PublicComponent} from '@pages/public/public.component';
           {path: '', component: HomeComponent}
         ]
       },
-      { path: '', redirectTo: 'en' }
+      { path: '', redirectTo: environment.defaultLang }
     ])
   ],
   declarations: [

@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {AuthenticationService} from '@servicesauth.service';
 import {User} from '@models/user.model';
 import {Role} from '@models/role.model';
+import {environment} from '@environments/environment';
 
 @Component({
   selector: 'page-dashboard',
@@ -12,6 +13,7 @@ import {Role} from '@models/role.model';
 export class DashboardComponent {
   currentUser: User;
   routing: Array<{text: string, value: string, icon: string}>;
+  env = environment;
 
   constructor( private router: Router, private authenticationService: AuthenticationService) {
     this.routing = [
