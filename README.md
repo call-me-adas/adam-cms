@@ -35,6 +35,7 @@ cd functions/
 Run `npm install` or `yarn install`
 ```
 
+
 ## Firebase setup
 
 Create a [Firebase account](https://firebase.google.com/), create a new project, and copy the config code for your project.
