@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {SafePipe} from '@shared/pipes/safe.pipe';
 import {StripHtmlPipe} from '@shared/pipes/strip-html.pipe';
 import {TruncatePipe} from '@shared/pipes/truncate.pipe';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports:      [
@@ -21,7 +22,8 @@ import {TruncatePipe} from '@shared/pipes/truncate.pipe';
     ReactiveFormsModule,
     SafePipe,
     TruncatePipe,
-    StripHtmlPipe
+    StripHtmlPipe,
+    TranslateModule
   ]
 })
 export class SharedModule {}

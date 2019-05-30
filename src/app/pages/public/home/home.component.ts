@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {PostsService} from '@servicesposts.service';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
+import {TranslateService, TranslationChangeEvent} from '@ngx-translate/core';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,7 @@ import {ActivatedRoute} from '@angular/router';
 export class HomeComponent {
   posts: Observable<any>;
 
-  constructor(private postsService: PostsService, private route: ActivatedRoute) {
+  constructor(private postsService: PostsService, private route: ActivatedRoute, translate: TranslateService) {
     this.route.paramMap.subscribe((params: any) => {
       this.posts = this.getPublishedPosts(params.params.lang);
     });
