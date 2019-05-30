@@ -12,7 +12,7 @@ export class TableComponent implements AfterViewInit {
   displayedColumns = ['title', 'url', 'language', 'draft', 'edit'];
   dataSource: MatTableDataSource<any>;
 
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatSort,{ read: true, static: false }) sort: MatSort;
 
   constructor(private postsService: PostsService) { }
 
