@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
 import { AppRouting } from './app.routing';
 import { AppComponent } from './app.component';
@@ -11,10 +11,9 @@ import {fakeBackendProvider} from './shared/interceptors/fake-backend';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
-import {SharedModule} from '@shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -25,21 +24,20 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    AppRouting,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
+        useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
     }),
-    AppRouting,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
     // provider used to create fake backend
     fakeBackendProvider
   ],
@@ -47,6 +45,6 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 })
 export class AppModule { }
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

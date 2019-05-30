@@ -7,9 +7,11 @@ import {PublicComponent} from '@pages/public/public.component';
 import {environment} from '@environments/environment';
 import {PostComponent} from '@pages/public/post/post.component';
 import {NotFoundComponent} from '@pages/public/not-found/not-found.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
+    TranslateModule,
     MaterialModule,
     SharedModule,
     RouterModule.forChild([
