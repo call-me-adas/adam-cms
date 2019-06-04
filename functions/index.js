@@ -15,7 +15,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = path.join(process.cwd(), 'dist');
 const routes = [
-  {path: '/*', view: 'index', bundle: require('./dist/server/main')}
+  {path: '/es/*', view: 'es/index', bundle: require('./dist/server/es/main')},
+  {path: '/*', view: 'index', bundle: require('./dist/server/en/main')}
 ];
 
 // Load your engine
@@ -42,7 +43,8 @@ routes.forEach((route) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Node Express server listening on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Node Express server listening on port ${PORT}`);
+// });
 exports.ssr = functions.https.onRequest(app);
+

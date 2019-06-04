@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore, DocumentChangeAction} from '@angular/fire/firestore';
-import {defaultIfEmpty, endWith, filter, flatMap, map, mergeAll, mergeMap, startWith, take} from 'rxjs/operators';
-import {empty, merge, Observable, of} from 'rxjs';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {map, take} from 'rxjs/operators';
 
 
 @Injectable({ providedIn: 'root' })

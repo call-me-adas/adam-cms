@@ -5,13 +5,13 @@ import {LoginComponent} from '@pages/admin/login/login.component';
 import {SharedModule} from '@shared/shared.module';
 import {AuthGuard} from '@guardsauth.guard';
 import { CKEditorModule } from 'ng2-ckeditor';
-import {MaterialModule} from '@shared/material.module';
+import {MaterialModule} from '@shared/modules/material.module';
 import {PagesComponent} from '@pages/admin/dashboard/pages/pages.component';
 import {EditPostComponent} from '@pages/admin/dashboard/posts/edit-post/edit-post.component';
 import {ListPostsComponent} from '@pages/admin/dashboard/posts/list-posts/list-posts.component';
 import {AddPostComponent} from '@pages/admin/dashboard/posts/add-post/add-post.component';
 import {TableComponent} from '@pages/admin/dashboard/posts/list-posts/table/table.component';
-import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
+import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
 import {environment} from '@environmentsenvironment';
 
 @NgModule({

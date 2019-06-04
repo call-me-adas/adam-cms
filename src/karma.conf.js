@@ -4,29 +4,43 @@
 module.exports = function (config) {
   config.set({
     basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    frameworks: ['parallel', 'jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
+      require('karma-mocha-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-parallel')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
+    files: [
+      {pattern: './test.ts', watched: false}
+    ],
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, '../coverage/blog'),
-      reports: ['html', 'lcovonly', 'text-summary'],
+      dir: require('path').join(__dirname, '../coverage'),
+      reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
+    reporters: ['progress', 'mocha'],
+    mochaReporter: {
+      output: 'minimal'
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
     singleRun: false,
-    restartOnFileChange: true
+    browsers: ['ChromeHeadlessNoSandbox'],
+    browserDisconnectTolerance: 2,
+    browserNoActivityTimeout: 50000,
+    customLaunchers: {
+      ChromeHeadlessNoSandbox: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    }
   });
 };

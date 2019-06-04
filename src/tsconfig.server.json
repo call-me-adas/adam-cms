@@ -2,7 +2,18 @@
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "outDir": "../out-tsc/app-server",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@components/*": ["app/shared/components/*"],
+      "@pages/*": ["app/pages/*"],
+      "@shared/*": ["app/shared/*"],
+      "@interceptors*": ["app/shared/interceptors/*"],
+      "@guards*": ["app/shared/guards/*"],
+      "@models*": ["app/shared/models/*"],
+      "@environments*": ["environments/*"],
+      "@services*": ["app/shared/services/*"]
+    }
   },
   "angularCompilerOptions": {
     "entryModule": "app/app.server.module#AppServerModule"

@@ -2,16 +2,14 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {HomeComponent} from '@pages/public/home/home.component';
 import {SharedModule} from '@shared/shared.module';
-import {MaterialModule} from '@shared/material.module';
+import {MaterialModule} from '@shared/modules/material.module';
 import {PublicComponent} from '@pages/public/public.component';
 import {environment} from '@environments/environment';
 import {PostComponent} from '@pages/public/post/post.component';
 import {NotFoundComponent} from '@pages/public/not-found/not-found.component';
-import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   imports: [
-    TranslateModule,
     MaterialModule,
     SharedModule,
     RouterModule.forChild([

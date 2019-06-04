@@ -3,7 +3,7 @@ import {PostsService} from '@services/posts.service';
 import { environment } from '@environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
-import {DialogYesNoComponent} from '@app/components/dialog-yes-no/dialog-yes-no.component';
+import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
 
 @Component({
   selector: 'page-edit-post',

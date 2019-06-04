@@ -1,25 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "src",
-    "paths": {
-      "@app/*": ["app/*"],
-      "@pages/*": ["app/pages/*"],
-      "@shared/*": ["app/shared/*"],
-      "@interceptors*": ["app/shared/interceptors/*"],
-      "@guards*": ["app/shared/guards/*"],
-      "@models*": ["app/shared/models/*"],
-      "@environments*": ["environments/*"],
-      "@services*": ["app/shared/services/*"]
-    },
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
-    "module": "es2015",
+    "module": "esNext",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
@@ -27,6 +16,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@components/*": ["src/app/shared/components/*"],
+      "@pages/*": ["src/app/pages/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@interceptors*": ["src/app/shared/interceptors/*"],
+      "@guards*": ["src/app/shared/guards/*"],
+      "@models*": ["src/app/shared/models/*"],
+      "@environments*": ["src/environments/*"],
+      "@services*": ["src/app/shared/services/*"]
+    },
+    "skipLibCheck": true
+  },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
   }
 }

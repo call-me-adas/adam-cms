@@ -1,50 +1,73 @@
-import { BrowserModule } from '@angular/platform-browser';
-import {APP_INITIALIZER, NgModule} from '@angular/core';
-
-import { AppRouting } from './app.routing';
-import { AppComponent } from './app.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule, HttpClient} from '@angular/common/http';
-import {JwtInterceptor} from './shared/interceptors/jwt.interceptor';
-import {ErrorInterceptor} from './shared/interceptors/error.interceptor';
-import {fakeBackendProvider} from './shared/interceptors/fake-backend';
-import { AngularFireModule } from '@angular/fire';
+import {ErrorHandler, LOCALE_ID, NgModule, TRANSLATIONS} from '@angular/core';
+import {CoreModule} from './core/core.module';
+import {AppComponent} from './app.component';
+import {APP_CONFIG, AppConfig} from './configs/app.config';
+import {SharedModule} from './shared/shared.module';
+import {NgxExampleLibraryModule} from '@ismaestro/ngx-example-library';
+import {FirebaseModule} from './shared/modules/firebase.module';
+import {SentryErrorHandler} from './core/sentry.errorhandler';
+import {BrowserModule} from '@angular/platform-browser';
+import {I18n} from '@ngx-translate/i18n-polyfill';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {registerLocaleData} from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import {NgxProgressiveImageLoaderModule} from 'ngx-progressive-image-loader';
+import {Routes, RouterModule} from '@angular/router';
+import {AngularFireModule} from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import {environment} from '../environments/environment';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {environment} from '@environments/environment';
+import {JwtInterceptor} from '@shared/interfaces/jwt.interceptor';
+import {ErrorInterceptor} from '@shared/interfaces/error.interceptor';
+import {FakeBackendInterceptor} from '@shared/interfaces/fake-backend';
+
+declare const require;
+
+registerLocaleData(localeEs, 'es');
+
+const appRoutes: Routes = [
+  {
+    path: '',
+    loadChildren: './pages/public/public.module#PublicModule'
+  },
+  {
+    path: 'admin',
+    loadChildren: './pages/admin/admin.module#AdminModule'
+  },
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
+    BrowserModule.withServerTransition({appId: 'angularexampleapp'}),
     HttpClientModule,
-    AppRouting,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
+    CoreModule,
+    SharedModule,
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
   ],
+  declarations: [
+    AppComponent
+  ],
   providers: [
+    {provide: APP_CONFIG, useValue: AppConfig},
+    {provide: ErrorHandler, useClass: SentryErrorHandler},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    // provider used to create fake backend
-    fakeBackendProvider
+    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true },
+    {
+      provide: TRANSLATIONS,
+      useFactory: (locale) => {
+        locale = locale || 'en';
+        return require(`raw-loader!../i18n/messages.${locale}.xlf`);
+      },
+      deps: [LOCALE_ID]
+    },
+    I18n
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
 
-export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+export class AppModule {
 }
