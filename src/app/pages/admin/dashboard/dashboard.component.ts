@@ -20,6 +20,9 @@ export class DashboardComponent {
       {text: 'Pages', value: 'posts', icon: 'file_copy'},
       {text: 'Users', value: 'users', icon: 'people'}
     ];
+
+    this.currentUser = this.authenticationService.currentUserValue;
+    console.log(this.currentUser);
   }
 
   get isAdmin() {

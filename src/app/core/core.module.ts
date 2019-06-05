@@ -6,16 +6,19 @@ import {ProgressInterceptor} from './interceptors/progress.interceptor';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
+import {FirebaseModule} from '@shared/modules/firebase.module';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule
+    RouterModule,
+    FirebaseModule
   ],
   exports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FirebaseModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ProgressInterceptor, multi: true, deps: [ProgressBarService]},

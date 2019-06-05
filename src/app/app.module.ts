@@ -11,11 +11,7 @@ import {I18n} from '@ngx-translate/i18n-polyfill';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {registerLocaleData} from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-import {NgxProgressiveImageLoaderModule} from 'ngx-progressive-image-loader';
 import {Routes, RouterModule} from '@angular/router';
-import {AngularFireModule} from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import {environment} from '@environments/environment';
 import {JwtInterceptor} from '@shared/interfaces/jwt.interceptor';
 import {ErrorInterceptor} from '@shared/interfaces/error.interceptor';
 import {FakeBackendInterceptor} from '@shared/interfaces/fake-backend';
@@ -44,8 +40,6 @@ const appRoutes: Routes = [
     CoreModule,
     SharedModule,
     RouterModule.forRoot(appRoutes),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
   ],
   declarations: [
     AppComponent

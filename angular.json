@@ -46,6 +46,7 @@
               }
             ],
             "styles": [
+              "node_modules/flag-icon-css/css/flag-icon.min.css",
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "node_modules/ngx-progressive-image-loader/ngx-progressive-image-loader.scss",
               "src/assets/css/reset.css",

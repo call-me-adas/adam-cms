@@ -51,7 +51,8 @@ import {environment} from '@environmentsenvironment';
       {
         path: 'login',
         component: LoginComponent
-      }
+      },
+      { path: '', redirectTo: 'login' }
     ]),
     CKEditorModule
   ],

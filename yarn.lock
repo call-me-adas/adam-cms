@@ -3661,6 +3661,11 @@ firebase@5.8.4:
     "@firebase/polyfill" "0.3.6"
     "@firebase/storage" "0.2.8"
 
+flag-icon-css@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/flag-icon-css/-/flag-icon-css-3.3.0.tgz#7772461e4480d3d86da5962f02120a2825688433"
+  integrity sha512-u5lCGVExrJJRykNGd//ZrBU5Bkt0LTZJFSuG+Az/pwcHgzDeFwomwFbsgVtI1aJd6ysyHsx+5UGrA+nhSGd4yw==
+
 flatted@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.0.tgz#55122b6536ea496b4b44893ee2608141d10d9916"
