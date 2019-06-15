@@ -32,16 +32,26 @@
           <input matInput placeholder="Enter image url" [(ngModel)]="item.value.image">
         </mat-form-field>
 
+        <mat-form-field>
+          <input matInput placeholder="Enter image background url" [(ngModel)]="item.value.image">
+        </mat-form-field>
+
         <mat-checkbox [(ngModel)]="item.value.draft">
           Save as draft?
         </mat-checkbox>
       </div>
-      <div class="one-column">
+      <div class="one-column" style="display: flex;flex-direction: column;">
         <img [src]="item.value.image" class="image-preview"/>
+        <button mat-button (click)="showBackground=!showBackground">Show background image</button>
       </div>
     </div>
 
-    <app-editor [content]="editor" (correct)="correct = $event"></app-editor>
+
+    <div class="image-background-preview" *ngIf="showBackground">
+      <img class="image-background" [src]="item.value.image" />
+    </div>
+
+    <app-editor [content]="item.value.body" (correct)="correct = $event" (editor)="item.value.body = $event"></app-editor>
 
   </div>
 </ng-container>

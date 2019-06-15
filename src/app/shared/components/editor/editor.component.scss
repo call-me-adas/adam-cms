@@ -1,4 +1,4 @@
-.container {
+.containerEditor{
   display: flex;
   width: 100%;
   font-family: Roboto,"Helvetica Neue",sans-serif;
@@ -20,22 +20,6 @@
     }
   }
 
-  .msg-box {
-    position: fixed;
-    height: auto;
-    left: 50%;
-    width: calc(50% - 20px);
-    padding: 10px;
-    bottom: 0;
-    border: 1px dashed;
-    background-color: white;
-    &.failed {
-      color: #b43e3e;
-    }
-    &.correct {
-      color: green;
-    }
-  }
   .mat-icon {
     font-size: 140%;
     height: 20px;
@@ -51,6 +35,83 @@
 
 // CLASSES
 .editor {
-  &__header1 {}
+  &__container {
+    &--left {
+      text-align: left;
+    }
+    &--center {
+      text-align: center;
+    }
+    &--right {
+      text-align: right;
+    }
+    &--bigFirstLetter {
+      &:first-letter {
+        float: left;
+        font-size: 65px;
+        line-height: 50px;
+        padding-top: 5px;
+        padding-right: 8px;
+        padding-left: 3px;
+      }
+    }
+  }
 
+  &__columns {
+    display: flex;
+    .column {
+      flex: 1;
+      padding: 5px
+    }
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__hr {
+    width: 60%;
+    margin: 2em auto 3.5em;
+    height: 1px;
+    background-color: #E2E2E2;
+    border: none;
+  }
+
+  &__link {
+    color: #1b9adb;
+    border-bottom: 1px solid #1b9adb;
+    font-weight: 600;
+    &:hover {
+      color: #1274a4;
+    }
+  }
+
+  &__quote {
+    position: relative;
+    padding-left: 1em;
+    border-left: 0.2em solid #7391ab;
+    font-size: 14px;
+    font-weight: 100;
+    &:before, &:after {
+      content: '\201C';
+      color: #7391ab;
+    }
+    &:after {
+      content: '\201D';
+    }
+  }
+
+  &__videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

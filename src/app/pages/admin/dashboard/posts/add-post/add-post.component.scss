@@ -12,7 +12,11 @@
 
 .form-container {
   display: flex;
+  align-items: center;
   .one-column {
+    &:first-of-type {
+      flex: 1;
+    }
     padding: 2em;
   }
 }

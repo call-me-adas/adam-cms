@@ -4,6 +4,8 @@ import {environment} from '@environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
+import {AuthenticationService} from '@services/auth.service';
+import {User} from '@models/user.model';
 
 @Component({
   selector: 'page-add-post',
@@ -11,17 +13,17 @@ import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.comp
   styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent {
-  ckeConfig: any;
   defaultContent: any;
-  editor = 'My Document\'s <h1 class="editor__header1">Title</h1>';
-  correct = true;
-
+  correct = false;
+  showBackground = false;
+  currentUser: User;
 
   constructor(private postsService: PostsService, private route: ActivatedRoute,
               public dialog: MatDialog, private router: Router,
-              private snackBar: MatSnackBar) {
-    this.ckeConfig = environment.ckeConfig;
+              private snackBar: MatSnackBar,
+              private authenticationService: AuthenticationService) {
     this.defaultContent = environment.defaultCkeContent;
+    this.currentUser = this.authenticationService.currentUserValue;
   }
 
   openDialog(): void {
@@ -36,11 +38,16 @@ export class AddPostComponent {
 
 
   send() {
-    console.log(this.editor);
-    // this.openDialog();
+    this.openDialog();
   }
 
   addNewPost() {
+    const UserVar = {id: this.currentUser.id, name: this.currentUser.username};
+    this.defaultContent.en.author = UserVar;
+    this.defaultContent.pl.author = UserVar;
+    this.defaultContent.en.date = new Date();
+    this.defaultContent.pl.date = new Date();
+
     this.postsService.addNewPost({body: this.defaultContent})
       .then(data => {
         this.router.navigate(['../'], { relativeTo: this.route });

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {PostsService} from '@services/posts.service';
-import { environment } from '@environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
@@ -18,7 +17,6 @@ export class EditPostComponent implements OnInit {
 
   constructor(private postsService: PostsService, private route: ActivatedRoute,
               public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
-    this.ckeConfig = environment.ckeConfig;
     // this.defaultContent = environment.defaultCkeContent;
   }
 

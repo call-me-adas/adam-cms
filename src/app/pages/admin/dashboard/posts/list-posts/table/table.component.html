@@ -36,6 +36,16 @@
     <mat-cell *matCellDef="let item"> <mat-icon>{{ item.draft ? 'clear' : 'check' }}</mat-icon>  </mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">date_range</mat-icon> Date</mat-header-cell>
+    <mat-cell *matCellDef="let item"> {{ item.date.toDate() | date :'longDate'}}  </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="created">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">person</mat-icon> Created by </mat-header-cell>
+    <mat-cell *matCellDef="let item">  {{ item.author.name }} </mat-cell>
+  </ng-container>
+
   <ng-container matColumnDef="edit">
     <mat-header-cell *matHeaderCellDef mat-sort-header> <mat-icon class="table-icon-header">edit</mat-icon> Edit </mat-header-cell>
     <mat-cell *matCellDef="let item">

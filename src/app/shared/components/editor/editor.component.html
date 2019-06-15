@@ -8,7 +8,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="container">
+<div class="containerEditor">
     <div class="left-side" >
         <div class="preview-container" [innerHTML]="htmlFormat | safe:'html' " ></div>
     </div>
@@ -31,32 +31,32 @@
 
         <button mat-stroked-button [matMenuTriggerFor]="aligns"><mat-icon>format_align_justify</mat-icon>Align</button>
         <mat-menu #aligns="matMenu">
-            <button (click)="insertElement('h1', ['editor__header1'])" mat-menu-item><mat-icon>format_align_left</mat-icon>Left</button>
-            <button (click)="insertElement('h2', ['editor__header2'])" mat-menu-item><mat-icon>format_align_center</mat-icon>Center</button>
-            <button (click)="insertElement('h3', ['editor__header3'])" mat-menu-item><mat-icon>format_align_right</mat-icon>Right</button>
+            <button (click)="insertElement('div', ['editor__container--left'])" mat-menu-item><mat-icon>format_align_left</mat-icon>Left</button>
+            <button (click)="insertElement('div', ['editor__container--center'])" mat-menu-item><mat-icon>format_align_center</mat-icon>Center</button>
+            <button (click)="insertElement('div', ['editor__container-right'])" mat-menu-item><mat-icon>format_align_right</mat-icon>Right</button>
         </mat-menu>
 
         <button mat-stroked-button [matMenuTriggerFor]="containers"><mat-icon>view_module</mat-icon>Container</button>
         <mat-menu #containers="matMenu">
-            <button (click)="insertImage()" mat-menu-item><mat-icon>filter_2</mat-icon>Two</button>
-            <button (click)="insertImage()" mat-menu-item><mat-icon>filter_3</mat-icon>Three</button>
+            <button (click)="insertColumns(2, ['editor__columns'])" mat-menu-item><mat-icon>filter_2</mat-icon>Two</button>
+            <button (click)="insertColumns(3, ['editor__columns'])" mat-menu-item><mat-icon>filter_3</mat-icon>Three</button>
         </mat-menu>
 
         <button mat-stroked-button [matMenuTriggerFor]="lists"><mat-icon>list</mat-icon>List</button>
         <mat-menu #lists="matMenu">
-            <button (click)="insertImage()" mat-menu-item><mat-icon>format_list_bulleted</mat-icon>Dots</button>
-            <button (click)="insertImage()" mat-menu-item><mat-icon>format_list_numbered</mat-icon>Number</button>
+            <button (click)="insertList('ul', ['editor__list'])" mat-menu-item><mat-icon>format_list_bulleted</mat-icon>Dots</button>
+            <button (click)="insertList('ol', ['editor__list'])" mat-menu-item><mat-icon>format_list_numbered</mat-icon>Number</button>
         </mat-menu>
 
         <br>
         <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>format_bold</mat-icon>Bold</button>
-        <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>format_italic</mat-icon>Italic</button>
-        <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>text_rotation_none</mat-icon>Big letter</button>
-        <button mat-stroked-button (click)="insertImage()"><mat-icon>insert_photo</mat-icon>Image</button>
-        <button mat-stroked-button (click)="insertImage()"><mat-icon>power_input</mat-icon>HR</button>
-        <button mat-stroked-button (click)="insertImage()"><mat-icon>format_quote</mat-icon>Quote</button>
-        <button mat-stroked-button (click)="insertImage()"><mat-icon>link</mat-icon>Link</button>
-        <button mat-stroked-button (click)="insertImage()"><mat-icon>video_call</mat-icon>Video</button>
+        <button mat-stroked-button (click)="insertElement('i', ['editor__bold'])"><mat-icon>format_italic</mat-icon>Italic</button>
+        <button mat-stroked-button (click)="insertElement('p', ['editor__container--bigFirstLetter'])"><mat-icon>text_rotation_none</mat-icon>Big letter</button>
+        <button mat-stroked-button (click)="insertImage(['editor__image'])"><mat-icon>insert_photo</mat-icon>Image</button>
+        <button mat-stroked-button (click)="insertElement('div', ['editor__hr'])"><mat-icon>power_input</mat-icon>HR</button>
+        <button mat-stroked-button (click)="insertElement('div', ['editor__quote'])"><mat-icon>format_quote</mat-icon>Quote</button>
+        <button mat-stroked-button (click)="insertLink(['editor__link'])"><mat-icon>link</mat-icon>Link</button>
+        <button mat-stroked-button (click)="insertVideo(['editor__videoWrapper'])"><mat-icon>video_call</mat-icon>Video</button>
 
         <div style="margin: 10px 0 20px 0;">
             <div *ngIf="!error;else failed" >Status: Okay</div>

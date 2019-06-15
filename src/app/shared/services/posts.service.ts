@@ -10,6 +10,7 @@ export class PostsService {
   addNewPost(data) {
     return new Promise<any>((resolve, reject) => {
       this.getPosts().pipe(take(1)).subscribe((res: any) => {
+        console.log(data);
         const urlPl = data.body.pl.url;
         const urlGb = data.body.en.url;
         let err = {msg: ''};

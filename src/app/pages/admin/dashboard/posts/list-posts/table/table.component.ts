@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 import {MatSort, MatTableDataSource} from '@angular/material';
 import {PostsService} from '@servicesposts.service';
 
@@ -9,7 +9,7 @@ import {PostsService} from '@servicesposts.service';
 })
 export class TableComponent implements AfterViewInit {
   selectedOption = 'title';
-  displayedColumns = ['title', 'url', 'language', 'draft', 'edit'];
+  displayedColumns = ['title', 'url', 'language', 'draft', 'date', 'created', 'edit'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
