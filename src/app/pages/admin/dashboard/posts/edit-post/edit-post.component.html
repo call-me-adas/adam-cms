@@ -36,7 +36,7 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input matInput placeholder="Enter image background url" [(ngModel)]="item.value.image">
+          <input matInput placeholder="Enter image background url" [(ngModel)]="item.value.background">
         </mat-form-field>
 
         <mat-checkbox [(ngModel)]="item.value.draft">
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div class="image-background-preview" *ngIf="showBackground">
-      <img class="image-background" [src]="item.value.image" />
+      <img class="image-background" [src]="item.value.background" />
     </div>
     <app-editor [content]="item.value.body" (correct)="correct = $event" (editor)="item.value.body = $event"></app-editor>
   </div>
