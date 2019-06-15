@@ -45,16 +45,9 @@
         <button mat-button (click)="showBackground=!showBackground">Show background image</button>
       </div>
     </div>
-
-
     <div class="image-background-preview" *ngIf="showBackground">
       <img class="image-background" [src]="item.value.image" />
     </div>
-
     <app-editor [content]="item.value.body" (correct)="correct = $event" (editor)="item.value.body = $event"></app-editor>
-
   </div>
 </ng-container>
-
-
-

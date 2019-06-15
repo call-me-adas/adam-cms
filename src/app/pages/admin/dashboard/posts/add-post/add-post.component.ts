@@ -36,7 +36,6 @@ export class AddPostComponent {
     });
   }
 
-
   send() {
     this.openDialog();
   }
@@ -57,7 +56,6 @@ export class AddPostComponent {
           verticalPosition: 'top'
         });
       }).catch(err => {
-      console.log(err);
       this.snackBar.open(err.msg, '', {
         duration: 3000,
         panelClass: ['error-snackbar'],

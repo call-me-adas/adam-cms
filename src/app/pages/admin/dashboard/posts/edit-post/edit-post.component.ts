@@ -12,8 +12,9 @@ import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.comp
 export class EditPostComponent implements OnInit {
   idParametr: string;
   langParametr: string;
-  ckeConfig: any;
   defaultContent: any;
+  correct = false;
+  showBackground = false;
 
   constructor(private postsService: PostsService, private route: ActivatedRoute,
               public dialog: MatDialog, private router: Router, private snackBar: MatSnackBar) {
