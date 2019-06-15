@@ -26,11 +26,6 @@
               },
               {
                 "glob": "**/*",
-                "input": "./node_modules/froala-editor",
-                "output": "assets/froala-editor/"
-              },
-              {
-                "glob": "**/*",
                 "input": "./node_modules/font-awesome",
                 "output": "assets/font-awesome/"
               },

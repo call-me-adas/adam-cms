@@ -11,8 +11,7 @@ import {ListPostsComponent} from '@pages/admin/dashboard/posts/list-posts/list-p
 import {AddPostComponent} from '@pages/admin/dashboard/posts/add-post/add-post.component';
 import {TableComponent} from '@pages/admin/dashboard/posts/list-posts/table/table.component';
 import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
-import {EditorModule} from "@components/editor/editor.module";
+import {EditorModule} from '@components/editor/editor.module';
 @NgModule({
   imports: [
     SharedModule,
@@ -53,8 +52,6 @@ import {EditorModule} from "@components/editor/editor.module";
       },
       { path: '', redirectTo: 'login' }
     ]),
-    FroalaEditorModule.forRoot(),
-    FroalaViewModule.forRoot(),
     EditorModule
   ],
   declarations: [
@@ -72,8 +69,3 @@ import {EditorModule} from "@components/editor/editor.module";
 })
 export class AdminModule {
 }
-
-// import { AuthGuard } from './shared/guards/auth.guard';
-// import { Role } from './shared/models/role.model';
-// canActivate: [AuthGuard]
-// data: { roles: [Role.Admin] }
