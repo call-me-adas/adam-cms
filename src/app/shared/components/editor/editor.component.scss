@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  width: 100%;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+
+  .left-side, .right-side {
+    flex: 1;
+    padding: 10px;
+  }
+  .left-side {
+    .preview-container {
+      word-break: break-word;
+    }
+  }
+  .right-side {
+    background-color: #f5f5f5;
+    .textarea {
+      min-height: 400px;
+      width: 100%;
+    }
+  }
+
+  .msg-box {
+    position: fixed;
+    height: auto;
+    left: 50%;
+    width: calc(50% - 20px);
+    padding: 10px;
+    bottom: 0;
+    border: 1px dashed;
+    background-color: white;
+    &.failed {
+      color: #b43e3e;
+    }
+    &.correct {
+      color: green;
+    }
+  }
+  .mat-icon {
+    font-size: 140%;
+    height: 20px;
+    width: 27px;
+    line-height: 100%;
+    text-align: left;
+  }
+}
+.mat-stroked-button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+// CLASSES
+.editor {
+  &__header1 {}
+
+}

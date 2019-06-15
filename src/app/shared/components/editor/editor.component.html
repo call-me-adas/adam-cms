@@ -1,0 +1,70 @@
+<mat-toolbar style="border-bottom: 1px solid #d0d0d0;">
+    <mat-toolbar-row>
+        <span>Preview</span>
+        <span style="flex: 1"></span>
+        <mat-icon style="cursor: pointer" (click)="showEditor=!showEditor">
+            {{showEditor ? 'fullscreen' : 'fullscreen_exit'}}
+        </mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+    <div class="left-side" >
+        <div class="preview-container" [innerHTML]="htmlFormat | safe:'html' " ></div>
+    </div>
+    <div class="right-side" *ngIf="showEditor">
+        <div style="margin-bottom: 10px;">
+            <h3 style="display: inline-block">Type in HTML</h3>
+
+            <div style="float: right;margin-top: 10px;">
+                <button [disabled]="lastState === htmlFormat" mat-stroked-button (click)="undo()"><mat-icon>undo</mat-icon></button>
+                <button [disabled]="nextState === htmlFormat" mat-stroked-button (click)="redo()"><mat-icon>redo</mat-icon></button>
+            </div>
+        </div>
+
+        <button mat-stroked-button [matMenuTriggerFor]="headers"><mat-icon>text_fields</mat-icon>Headers</button>
+        <mat-menu #headers="matMenu">
+            <button (click)="insertElement('h1', ['editor__header1'])" mat-menu-item><mat-icon>looks_one</mat-icon> Header 1</button>
+            <button (click)="insertElement('h2', ['editor__header2'])" mat-menu-item><mat-icon>looks_two</mat-icon> Header 2</button>
+            <button (click)="insertElement('h3', ['editor__header3'])" mat-menu-item><mat-icon>looks_3</mat-icon> Header 3</button>
+        </mat-menu>
+
+        <button mat-stroked-button [matMenuTriggerFor]="aligns"><mat-icon>format_align_justify</mat-icon>Align</button>
+        <mat-menu #aligns="matMenu">
+            <button (click)="insertElement('h1', ['editor__header1'])" mat-menu-item><mat-icon>format_align_left</mat-icon>Left</button>
+            <button (click)="insertElement('h2', ['editor__header2'])" mat-menu-item><mat-icon>format_align_center</mat-icon>Center</button>
+            <button (click)="insertElement('h3', ['editor__header3'])" mat-menu-item><mat-icon>format_align_right</mat-icon>Right</button>
+        </mat-menu>
+
+        <button mat-stroked-button [matMenuTriggerFor]="containers"><mat-icon>view_module</mat-icon>Container</button>
+        <mat-menu #containers="matMenu">
+            <button (click)="insertImage()" mat-menu-item><mat-icon>filter_2</mat-icon>Two</button>
+            <button (click)="insertImage()" mat-menu-item><mat-icon>filter_3</mat-icon>Three</button>
+        </mat-menu>
+
+        <button mat-stroked-button [matMenuTriggerFor]="lists"><mat-icon>list</mat-icon>List</button>
+        <mat-menu #lists="matMenu">
+            <button (click)="insertImage()" mat-menu-item><mat-icon>format_list_bulleted</mat-icon>Dots</button>
+            <button (click)="insertImage()" mat-menu-item><mat-icon>format_list_numbered</mat-icon>Number</button>
+        </mat-menu>
+
+        <br>
+        <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>format_bold</mat-icon>Bold</button>
+        <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>format_italic</mat-icon>Italic</button>
+        <button mat-stroked-button (click)="insertElement('b', ['editor__bold'])"><mat-icon>text_rotation_none</mat-icon>Big letter</button>
+        <button mat-stroked-button (click)="insertImage()"><mat-icon>insert_photo</mat-icon>Image</button>
+        <button mat-stroked-button (click)="insertImage()"><mat-icon>power_input</mat-icon>HR</button>
+        <button mat-stroked-button (click)="insertImage()"><mat-icon>format_quote</mat-icon>Quote</button>
+        <button mat-stroked-button (click)="insertImage()"><mat-icon>link</mat-icon>Link</button>
+        <button mat-stroked-button (click)="insertImage()"><mat-icon>video_call</mat-icon>Video</button>
+
+        <div style="margin: 10px 0 20px 0;">
+            <div *ngIf="!error;else failed" >Status: Okay</div>
+            <ng-template #failed ><div>Status: {{error}}</div></ng-template>
+        </div>
+        <textarea class="textarea" autosize (keyup)="typeTextarea($event)" #textAreaElement
+                  [(ngModel)]="htmlFormat"></textarea>
+    </div>
+
+
+</div>

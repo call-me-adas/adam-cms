@@ -638,6 +638,13 @@
     "@sentry/types" "4.5.3"
     tslib "^1.9.3"
 
+"@tinymce/tinymce-angular@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@tinymce/tinymce-angular/-/tinymce-angular-3.0.1.tgz#4746c6cc3340ce4c73e22576127dc122e11d6b73"
+  integrity sha512-L6wL/hhyqWCtkA08Mq3Cck5rcFaZaDy6ETATlr40hCfDhLNP9W9f8ibxHmsj7EUJNDxhANS67zFLlSc0IXUvZg==
+  dependencies:
+    tslib "^1.9.0"
+
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
@@ -992,6 +999,13 @@ amdefine@>=0.0.4, amdefine@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
+
+angular-froala-wysiwyg@^3.0.0-rc.2:
+  version "3.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/angular-froala-wysiwyg/-/angular-froala-wysiwyg-3.0.0-rc.2.tgz#1ed8f7d15656b3aa33dd09962d7fb2521bc83576"
+  integrity sha512-VakH9h0Hh182jIzu9EP/QII8h1HWacfJsFWwL0w8h7zK7xeQJ1wKn8c4IIDTRAmMzzw1tZkqJ/3ri9UTTj/+iA==
+  dependencies:
+    froala-editor "^3.0.0-rc.1"
 
 ansi-align@^2.0.0:
   version "2.0.0"
@@ -3686,6 +3700,11 @@ follow-redirects@^1.0.0:
   dependencies:
     debug "^3.2.6"
 
+font-awesome@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
+  integrity sha1-j6jPBBGhoxr9B7BtKQK7n8gVoTM=
+
 for-in@^0.1.3:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-0.1.8.tgz#d8773908e31256109952b1fdb9b3fa867d2775e1"
@@ -3733,6 +3752,11 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+
+froala-editor@^3.0.0-rc.1, froala-editor@^3.0.0-rc.2:
+  version "3.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/froala-editor/-/froala-editor-3.0.0-rc.2.tgz#ddf5cba4f8072e7bfb5fbca68b1360027a74827c"
+  integrity sha512-PsPLrX5JgX0KAPmplvi2Q8XZ3J1s9gG1mdzVaW9jcKe+5mKoQHzxPjsO03SKbwsIk2hHQCyqXFWrYSbzLNRQWw==
 
 from2@^2.1.0:
   version "2.3.0"
@@ -4312,6 +4336,11 @@ html-entities@^1.2.0:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/html-entities/-/html-entities-1.2.1.tgz#0df29351f0721163515dfb9e5543e5f6eed5162f"
   integrity sha1-DfKTUfByEWNRXfueVUPl9u7VFi8=
+
+html-tag-validator@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/html-tag-validator/-/html-tag-validator-1.6.0.tgz#ccd115ec3063595e2240985525d39732040f9b43"
+  integrity sha512-iw2slAbTilB/WNMMZCa0yo5UHJKmNVQmw89yPHI0Opj8iy7+2jGN/yd19p/eQsvgIp1CzRV6btz2Nd98EwdvsA==
 
 html2canvas@1.0.0-alpha.12:
   version "1.0.0-alpha.12"
@@ -6195,6 +6224,13 @@ ng2-ckeditor@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/ng2-ckeditor/-/ng2-ckeditor-1.2.3.tgz#b96e2d521e385de32c8a297610218417a6da6693"
   integrity sha512-BoD5jjqI+y/0XO7+Pn1BeTGBFeXST95Ji7AVVBXHtQCg+fyURFhAPI5ot5N+1KE+DSqPCBJnpGUYe7z8DTo7Yg==
+
+ngx-autosize@^1.6.3:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/ngx-autosize/-/ngx-autosize-1.6.3.tgz#1ba9309107d99dadfeea843c7d0bbcb7a1b856ae"
+  integrity sha512-zZ2IjNlPcQO33Ral9uPLUEfXJE9xGKvEyjBg6mk1EKpbSOvKobRDtSOvbukR5GD8niQogpsiaj0LnhIj0ePkRA==
+  dependencies:
+    tslib "^1.9.0"
 
 ngx-progressive-image-loader@4.0.0-beta.9:
   version "4.0.0-beta.9"

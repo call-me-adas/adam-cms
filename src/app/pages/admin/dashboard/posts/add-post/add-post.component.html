@@ -1,7 +1,7 @@
 <mat-toolbar>
   <h2><a [routerLink]="['../']">List</a>&#8195;/&#8195;Adding new post</h2>
   <div class="spacer"></div>
-  <button mat-raised-button (click)="send()" class="button-icon">
+  <button [disabled]="!correct" mat-raised-button (click)="send()" class="button-icon">
     SEND <mat-icon>done</mat-icon>
   </button>
 </mat-toolbar>
@@ -41,9 +41,8 @@
       </div>
     </div>
 
-    <ckeditor [(ngModel)]="item.value.body"
-              [config]="ckeConfig">
-    </ckeditor>
+    <app-editor [content]="editor" (correct)="correct = $event"></app-editor>
+
   </div>
 </ng-container>
 

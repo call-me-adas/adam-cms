@@ -25,6 +25,16 @@
                 "output": "/assets/images"
               },
               {
+                "glob": "**/*",
+                "input": "./node_modules/froala-editor",
+                "output": "assets/froala-editor/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/font-awesome",
+                "output": "assets/font-awesome/"
+              },
+              {
                 "glob": "favicon.ico",
                 "input": "src",
                 "output": "/assets/common"
@@ -48,8 +58,6 @@
             "styles": [
               "node_modules/flag-icon-css/css/flag-icon.min.css",
               "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "node_modules/ngx-progressive-image-loader/ngx-progressive-image-loader.scss",
-              "src/assets/css/reset.css",
               "src/assets/css/loading.css",
               "src/app/styles/styles.scss"
             ],

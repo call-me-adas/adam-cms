@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {PostsService} from '@services/posts.service';
-import { environment } from '@environments/environment';
+import {environment} from '@environments/environment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MatDialog, MatSnackBar} from '@angular/material';
 import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.component';
@@ -13,6 +13,9 @@ import {DialogYesNoComponent} from '@components/dialog-yes-no/dialog-yes-no.comp
 export class AddPostComponent {
   ckeConfig: any;
   defaultContent: any;
+  editor = 'My Document\'s <h1 class="editor__header1">Title</h1>';
+  correct = true;
+
 
   constructor(private postsService: PostsService, private route: ActivatedRoute,
               public dialog: MatDialog, private router: Router,
@@ -31,8 +34,10 @@ export class AddPostComponent {
     });
   }
 
+
   send() {
-    this.openDialog();
+    console.log(this.editor);
+    // this.openDialog();
   }
 
   addNewPost() {
@@ -46,7 +51,7 @@ export class AddPostComponent {
         });
       }).catch(err => {
       console.log(err);
-      this.snackBar.open(err.msg, '',{
+      this.snackBar.open(err.msg, '', {
         duration: 3000,
         panelClass: ['error-snackbar'],
         verticalPosition: 'top'

@@ -22,7 +22,6 @@ export class DashboardComponent {
     ];
 
     this.currentUser = this.authenticationService.currentUserValue;
-    console.log(this.currentUser);
   }
 
   get isAdmin() {
