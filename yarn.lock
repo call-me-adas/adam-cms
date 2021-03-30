@@ -1000,13 +1000,6 @@ amdefine@>=0.0.4, amdefine@^1.0.0:
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
   integrity sha1-SlKCrBZHKek2Gbz9OtFR+BfOkfU=
 
-angular-froala-wysiwyg@^3.0.0-rc.2:
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/angular-froala-wysiwyg/-/angular-froala-wysiwyg-3.0.0-rc.2.tgz#1ed8f7d15656b3aa33dd09962d7fb2521bc83576"
-  integrity sha512-VakH9h0Hh182jIzu9EP/QII8h1HWacfJsFWwL0w8h7zK7xeQJ1wKn8c4IIDTRAmMzzw1tZkqJ/3ri9UTTj/+iA==
-  dependencies:
-    froala-editor "^3.0.0-rc.1"
-
 ansi-align@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
@@ -3752,11 +3745,6 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
-
-froala-editor@^3.0.0-rc.1, froala-editor@^3.0.0-rc.2:
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/froala-editor/-/froala-editor-3.0.0-rc.2.tgz#ddf5cba4f8072e7bfb5fbca68b1360027a74827c"
-  integrity sha512-PsPLrX5JgX0KAPmplvi2Q8XZ3J1s9gG1mdzVaW9jcKe+5mKoQHzxPjsO03SKbwsIk2hHQCyqXFWrYSbzLNRQWw==
 
 from2@^2.1.0:
   version "2.3.0"
@@ -9803,9 +9791,9 @@ xxhashjs@^0.2.1:
     cuint "^0.2.2"
 
 y18n@^3.2.0, y18n@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.1.tgz#6d15fba884c08679c0d77e88e7759e811e07fa41"
-  integrity sha1-bRX7qITAhnnA136I53WegR4H+kE=
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-3.2.2.tgz#85c901bd6470ce71fc4bb723ad209b70f7f28696"
+  integrity sha512-uGZHXkHnhF0XeeAPgnKfPv1bgKAYyVvmNL1xlKsPYZPaIHxGti2hHqvOCQv71XMsLxu1QjergkqogUnms5D3YQ==
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"
