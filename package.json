@@ -103,7 +103,7 @@
     "moment": "2.24.0",
     "ng-bullet": "1.0.3",
     "ng-mocks": "7.7.0",
-    "ng-packagr": "4.7.1",
+    "ng-packagr": "10.1.1",
     "node-sass": "4.11.0",
     "path": "0.12.7",
     "protractor": "5.4.2",
